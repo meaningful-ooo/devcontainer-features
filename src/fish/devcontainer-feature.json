@@ -1,0 +1,13 @@
+{
+  "name": "fish",
+  "id": "fish",
+  "version": "1.0.0",
+  "description": "Installs fish shell and Fisher plugin manager (optionally)",
+  "options": {
+    "fisher": {
+      "type": "boolean",
+      "default": true,
+      "description": "Install Fisher plugin manager"
+    }
+  }
+}
