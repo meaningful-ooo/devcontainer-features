@@ -72,7 +72,7 @@ elif grep -q 'Debian' < /etc/os-release; then
     curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_11/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
   fi
 fi
-apt_get_update
+apt-get update -y
 apt-get -y install --no-install-recommends fish
 fish -v
 
