@@ -3,6 +3,9 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - src/**
+      - test/**
   workflow_dispatch:
 
 concurrency:
@@ -10,15 +13,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      features: ${{ steps.filter.outputs.changes }}
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            fish: ./**/fish/**
+
+  test-changed:
+    needs:
+      - detect-changes
     runs-on: ubuntu-latest
     continue-on-error: true
     strategy:
       matrix:
-        features: [
-           "color",
-           "hello"
-        ]
+        features: ${{ fromJSON(needs.detect-changes.outputs.features) }}
         baseImage:
           [
             "mcr.microsoft.com/devcontainers/base:ubuntu"
