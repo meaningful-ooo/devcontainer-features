@@ -34,7 +34,9 @@ jobs:
       matrix:
         features: ${{ fromJSON(needs.detect-changes.outputs.features) }}
         baseImage:
-          - debian:stable-slim
+          - debian:9-slim
+          - debian:10-slim
+          - debian:11-slim
           - ubuntu:focal
           - ubuntu:jammy
           - mcr.microsoft.com/devcontainers/base:ubuntu
@@ -75,7 +77,9 @@ jobs:
         features:
           - fish
         baseImage:
-          - debian:stable-slim
+          - debian:9-slim
+          - debian:10-slim
+          - debian:11-slim
           - ubuntu:focal
           - ubuntu:jammy
           - mcr.microsoft.com/devcontainers/base:ubuntu
