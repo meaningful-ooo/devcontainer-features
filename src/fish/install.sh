@@ -51,7 +51,7 @@ check_packages() {
 export DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies if missing
-check_packages curl ca-certificates gnupg2
+check_packages curl ca-certificates
 if ! type git > /dev/null 2>&1; then
   check_packages git
 fi
@@ -65,10 +65,10 @@ if [ "${ID}" = "ubuntu" ]; then
 elif [ "${ID}" = "debian" ]; then
   if [ "${VERSION_ID}" = "9" ]; then
     echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_9.0/ /' | tee /etc/apt/sources.list.d/shells:fish:release:3.list
-    curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_9.0/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
+    curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:3/Debian_9.0/Release.key" | tee /etc/apt/trusted.gpg.d/shells_fish_release_3.asc > /dev/null
   else
     echo "deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_${VERSION_ID}/ /" | tee /etc/apt/sources.list.d/shells:fish:release:3.list
-    curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:3/Debian_${VERSION_ID}/Release.key" | gpg --dearmor | tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
+    curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:3/Debian_${VERSION_ID}/Release.key" | tee /etc/apt/trusted.gpg.d/shells_fish_release_3.asc > /dev/null
   fi
 fi
 apt-get update -y
