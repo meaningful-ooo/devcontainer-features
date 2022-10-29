@@ -58,16 +58,17 @@ fi
 
 # Install fish shell
 echo "Installing fish shell..."
-if grep -q 'Ubuntu' < /etc/os-release; then
+source /etc/os-release
+if [ "${ID}" = "ubuntu" ]; then
   apt-add-repository -y ppa:fish-shell/release-3
-elif grep -q 'Debian' < /etc/os-release; then
-  if grep -q 'stretch' < /etc/os-release; then
+elif [ "${ID}" = "debian" ]; then
+  if [ "${VERSION_ID}" = "9" ]; then
     echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_9.0/ /' | tee /etc/apt/sources.list.d/shells:fish:release:3.list
     curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_9.0/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
-  elif grep -q 'buster' < /etc/os-release; then
+  elif [ "${VERSION_ID}" = "10" ]; then
     echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_10/ /' | tee /etc/apt/sources.list.d/shells:fish:release:3.list
     curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
-  elif grep -q 'bullseye' < /etc/os-release; then
+  elif [ "${VERSION_ID}" = "11" ]; then
     echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_11/ /' | tee /etc/apt/sources.list.d/shells:fish:release:3.list
     curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_11/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
   fi
