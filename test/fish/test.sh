@@ -2,8 +2,18 @@
 
 set -e
 
+source /etc/os-release
+
+cleanup() {
+  case "${ID}" in
+    debian|ubuntu)
+      rm -rf /var/lib/apt/lists/*
+    ;;
+  esac
+}
+
 # Clean up
-rm -rf /var/lib/apt/lists/*
+cleanup
 
 NON_ROOT_USER=""
 POSSIBLE_USERS=("vscode" "node" "codespace" "$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)")
@@ -18,18 +28,26 @@ if [ "${NON_ROOT_USER}" = "" ]; then
 fi
 
 apt_get_update() {
-  if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
-    echo "Running apt-get update..."
-    apt-get update -y
-  fi
+  case "${ID}" in
+    debian|ubuntu)
+      if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
+        echo "Running apt-get update..."
+        apt-get update -y
+      fi
+    ;;
+  esac
 }
 
 # Checks if packages are installed and installs them if not
 check_packages() {
-  if ! dpkg -s "$@" >/dev/null 2>&1; then
-    apt_get_update
-    apt-get -y install --no-install-recommends "$@"
-  fi
+  case "${ID}" in
+    debian|ubuntu)
+      if ! dpkg -s "$@" >/dev/null 2>&1; then
+        apt_get_update
+        apt-get -y install --no-install-recommends "$@"
+      fi
+    ;;
+  esac
 }
 
 check_packages git
@@ -39,7 +57,11 @@ LATEST_FISH_VERSION="$(git ls-remote --tags https://github.com/fish-shell/fish-s
 source dev-container-features-test-lib
 
 # Feature-specific tests
-check "fish" fish -v | grep "$LATEST_FISH_VERSION"
+case "${ID}" in
+  debian|ubuntu)
+    check "fish" fish -v | grep "$LATEST_FISH_VERSION"
+  ;;
+esac
 echo "Testing with user: ${NON_ROOT_USER}"
 check "fisher" su "${NON_ROOT_USER}" -c 'fish -c "fisher -v"'
 
