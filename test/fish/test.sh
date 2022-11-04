@@ -47,6 +47,11 @@ check_packages() {
         apt-get -y install --no-install-recommends "$@"
       fi
     ;;
+    alpine)
+      if ! apk -e info "$@" >/dev/null 2>&1; then
+        apk add --no-cache "$@"
+      fi
+    ;;
   esac
 }
 
@@ -60,6 +65,9 @@ source dev-container-features-test-lib
 case "${ID}" in
   debian|ubuntu)
     check "fish" fish -v | grep "$LATEST_FISH_VERSION"
+  ;;
+  alpine)
+    check "fish" fish -v
   ;;
 esac
 echo "Testing with user: ${NON_ROOT_USER}"
