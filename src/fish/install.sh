@@ -63,6 +63,11 @@ check_packages() {
         apt-get -y install --no-install-recommends "$@"
       fi
     ;;
+    alpine)
+      if ! apk -e info "$@" >/dev/null 2>&1; then
+        apk add --no-cache "$@"
+      fi
+    ;;
   esac
 }
 
@@ -95,6 +100,9 @@ case "${ID}" in
     apt-get update -y
     apt-get -y install --no-install-recommends fish
 
+  ;;
+  alpine)
+    apk add --no-cache fish
   ;;
 esac
 
