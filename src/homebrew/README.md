@@ -1,0 +1,27 @@
+
+# Homebrew (homebrew)
+
+Installs Homebrew
+
+## Example Usage
+
+```json
+"features": {
+    "ghcr.io/meaningful-ooo/devcontainer-features/homebrew:1": {
+        "version": "latest"
+    }
+}
+```
+
+## Options
+
+| Options Id | Description | Type | Default Value |
+|-----|-----|-----|-----|
+| brewPrefix | Location to install Homebrew. Please note that changing this setting will prevent you from using some of the precompiled binaries and therefore isn't recommended. | string | /home/linuxbrew/.linuxbrew |
+| shallowClone | Install Homebrew using shallow clone. Shallow clone allows significant reduction in the installation size at the expense of not being able to run `brew update`, which effectively means the package index will be frozen at the moment of the image creation. | boolean | false |
+
+
+
+---
+
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/meaningful-ooo/devcontainer-features/blob/main/src/homebrew/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
