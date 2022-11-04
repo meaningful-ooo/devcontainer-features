@@ -39,6 +39,7 @@ jobs:
           - debian:11-slim
           - ubuntu:focal
           - ubuntu:jammy
+          - mcr.microsoft.com/devcontainers/base:alpine
           - mcr.microsoft.com/devcontainers/base:ubuntu
           - mcr.microsoft.com/devcontainers/base:debian
     steps:
@@ -82,6 +83,7 @@ jobs:
           - debian:11-slim
           - ubuntu:focal
           - ubuntu:jammy
+          - mcr.microsoft.com/devcontainers/base:alpine
           - mcr.microsoft.com/devcontainers/base:ubuntu
           - mcr.microsoft.com/devcontainers/base:debian
     steps:
