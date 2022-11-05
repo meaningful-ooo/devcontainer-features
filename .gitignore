@@ -2,3 +2,6 @@ node_modules
 
 # Make sure to include VS Code settings
 !.vscode
+
+# Don't pin versions of Homebrew packages
+Brewfile.lock*
