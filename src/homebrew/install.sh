@@ -2,6 +2,7 @@
 
 BREW_PREFIX=${BREW_PREFIX:-"/home/linuxbrew/.linuxbrew"}
 SHALLOW_CLONE=${SHALLOW_CLONE:-"false"}
+UPDATE_RC="true"
 USERNAME=${USERNAME:-"automatic"}
 
 ARCHITECTURE="$(uname -m)"
