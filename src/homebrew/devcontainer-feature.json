@@ -5,11 +5,6 @@
   "description": "Installs Homebrew",
   "documentationURL": "https://github.com/meaningful-ooo/devcontainer-features/tree/main/src/homebrew",
   "options": {
-    "brewPrefix": {
-      "type": "string",
-      "default": "/home/linuxbrew/.linuxbrew",
-      "description": "Location to install Homebrew. Please note that changing this setting will prevent you from using some of the precompiled binaries and therefore isn't recommended."
-    },
     "shallowClone": {
       "type": "boolean",
       "default": false,
