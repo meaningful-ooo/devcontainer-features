@@ -1,0 +1,8 @@
+{
+  "alpine": {
+    "image": "mcr.microsoft.com/devcontainers/base:alpine",
+    "features": {
+      "fish": {}
+    }
+  }
+}

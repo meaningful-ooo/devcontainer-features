@@ -35,7 +35,6 @@ jobs:
       matrix:
         features: ${{ fromJSON(needs.detect-changes.outputs.features) }}
         baseImage:
-          - mcr.microsoft.com/devcontainers/base:alpine
           - mcr.microsoft.com/devcontainers/base:debian
           - mcr.microsoft.com/devcontainers/base:ubuntu
           - debian:9-slim
@@ -80,7 +79,6 @@ jobs:
           - fish
           - homebrew
         baseImage:
-          - mcr.microsoft.com/devcontainers/base:alpine
           - mcr.microsoft.com/devcontainers/base:debian
           - mcr.microsoft.com/devcontainers/base:ubuntu
           - debian:9-slim
