@@ -1,1 +1,4 @@
 node_modules
+
+# Make sure to include VS Code settings
+!.vscode
