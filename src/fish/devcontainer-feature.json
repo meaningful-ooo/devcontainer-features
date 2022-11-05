@@ -10,5 +10,12 @@
       "default": true,
       "description": "Install Fisher plugin manager"
     }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "fish"
+      }
+    }
   }
 }
