@@ -23,6 +23,7 @@ jobs:
         with:
           filters: |
             fish: ./**/fish/**
+            homebrew: ./**/homebrew/**
 
   test-changed:
     if: ${{ github.event_name == 'pull_request' }}
@@ -77,6 +78,7 @@ jobs:
       matrix:
         features:
           - fish
+          - homebrew
         baseImage:
           - mcr.microsoft.com/devcontainers/base:alpine
           - mcr.microsoft.com/devcontainers/base:debian
@@ -103,6 +105,7 @@ jobs:
       matrix:
         features:
           - fish
+          - homebrew
     steps:
       - uses: actions/checkout@v3
 
