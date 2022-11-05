@@ -11,15 +11,13 @@ if [ "${ARCHITECTURE}" != "amd64" ] && [ "${ARCHITECTURE}" != "x86_64" ]; then
 fi
 
 cleanup() {
+  source /etc/os-release
   case "${ID}" in
     debian|ubuntu)
       rm -rf /var/lib/apt/lists/*
     ;;
   esac
 }
-
-# Clean up
-cleanup
 
 if [ "$(id -u)" -ne 0 ]; then
   echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'
@@ -49,18 +47,15 @@ elif [ "${USERNAME}" = "none" ] || ! id -u ${USERNAME} > /dev/null 2>&1; then
 fi
 
 apt_get_update() {
-  case "${ID}" in
-    debian|ubuntu)
-      if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
+    if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
         echo "Running apt-get update..."
         apt-get update -y
-      fi
-    ;;
-  esac
+    fi
 }
 
 # Checks if packages are installed and installs them if not
 check_packages() {
+  source /etc/os-release
   case "${ID}" in
     debian|ubuntu)
       if ! dpkg -s "$@" >/dev/null 2>&1; then
@@ -98,6 +93,9 @@ updatefishconfig() {
 }
 
 export DEBIAN_FRONTEND=noninteractive
+
+# Clean up
+cleanup
 
 # Install dependencies if missing
 check_packages \
