@@ -1,7 +1,7 @@
 {
   "name": "Homebrew",
   "id": "homebrew",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Installs Homebrew",
   "documentationURL": "https://github.com/meaningful-ooo/devcontainer-features/tree/main/src/homebrew",
   "options": {
