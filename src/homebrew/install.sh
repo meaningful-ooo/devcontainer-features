@@ -2,7 +2,6 @@
 
 BREW_PREFIX=${BREW_PREFIX:-"/home/linuxbrew/.linuxbrew"}
 SHALLOW_CLONE=${SHALLOW_CLONE:-"false"}
-UPDATE_RC="true"
 USERNAME=${USERNAME:-"automatic"}
 
 ARCHITECTURE="$(uname -m)"
@@ -138,13 +137,5 @@ fi
 mkdir "${BREW_PREFIX}/bin"
 ln -s "${BREW_PREFIX}/Homebrew/bin/brew" "${BREW_PREFIX}/bin"
 chown -R ${USERNAME} "${BREW_PREFIX}"
-
-# Add Homebrew binaries into PATH in bashrc/zshrc/config.fish files
-updaterc "$(cat << EOF
-if [[ "\${PATH}" != *"${BREW_PREFIX}/bin"* ]]; then export PATH="${BREW_PREFIX}/bin:\${PATH}"; fi
-if [[ "\${PATH}" != *"${BREW_PREFIX}/sbin"* ]]; then export PATH="${BREW_PREFIX}/sbin:\${PATH}"; fi
-EOF
-)"
-updatefishconfig "fish_add_path ${BREW_PREFIX}/bin ${BREW_PREFIX}/sbin"
 
 echo "Done!"
