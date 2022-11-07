@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 FISHER=${FISHER:-"true"}
-FISHTAPE=${FISHTAPE:-"false"}
+FISHER_PLUGINS=${FISHER_PLUGINS:-""}
 USERNAME=${USERNAME:-"automatic"}
 
 source /etc/os-release
@@ -119,14 +119,21 @@ if [ "${FISHER}" = "true" ]; then
   fish -c "fisher -v"
 fi
 
-# Install Fishtape
-if [ "${FISHTAPE}" = "true" ]; then
-  echo "Installing Fishtape..."
-  fish -c 'fisher install jorgebucaran/fishtape'
+# Install Fisher plugins
+if [ -n "${FISHER_PLUGINS}" ]; then
+  echo "Installing Fisher plugins…"
+  for plugin in "${FISHER_PLUGINS[@]}"; do
+    printf "\tInstalling plugin: ${plugin}"
+    fish -c "fisher install ${FISHER_PLUGINS}"
+  done
+
   if [ "${USERNAME}" != "root" ]; then
-    su $USERNAME -c 'fish -c "fisher install jorgebucaran/fishtape"'
+    for plugin in "${FISHER_PLUGINS[@]}"; do
+      printf "\tInstalling plugin: ${plugin}"
+      su $USERNAME -c "fish -c 'fisher install ${FISHER_PLUGINS}'"
+    done
   fi
-  fish -c "fishtape -v"
+  fish -c 'fisher list; cat $__fish_config_dir/fish_plugins'
 fi
 
 

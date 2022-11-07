@@ -10,10 +10,10 @@
       "default": true,
       "description": "Install Fisher plugin manager"
     },
-    "fishtape": {
-      "type": "boolean",
-      "default": false,
-      "description": "Install Fishtape, 100% pure-Fish test runner"
+    "fisher_plugins": {
+      "type": "string",
+      "default": "",
+      "description": "Install [Fish's plugins](https://github.com/jorgebucaran/awsm.fish) using `fisher`"
     }
   },
   "customizations": {

@@ -1,10 +1,19 @@
 {
-  "alpine_with_fishtape": {
+  "alpine_with_fisher_single_plugin": {
     "image": "mcr.microsoft.com/devcontainers/base:alpine",
     "features": {
       "fish": {
-        "fishtape": true
+        "fisher_plugins": "jorgebucaran/fishtape"
+      }
+    }
+  },
+  "alpine_with_fisher_multiple_plugins": {
+    "image": "mcr.microsoft.com/devcontainers/base:alpine",
+    "features": {
+      "fish": {
+        "fisher_plugins": "jorgebucaran/fishtape pure-fish/pure"
       }
     }
   }
 }
+
