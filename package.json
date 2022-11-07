@@ -1,6 +1,7 @@
 {
   "name": "devcontainer-features",
   "devDependencies": {
+    "@devcontainers/cli": "^0.23.2",
     "gitmoji-cli": "^7.0.2"
   }
 }
