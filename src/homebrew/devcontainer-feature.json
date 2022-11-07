@@ -20,6 +20,7 @@
     "INFOPATH": "/home/linuxbrew/.linuxbrew/share/info:${INFOPATH}"
   },
   "installsAfter": [
-    "ghcr.io/devcontainers/features/common-utils"
+    "ghcr.io/devcontainers/features/common-utils",
+    "ghcr.io/meaningful-ooo/devcontainer-features/fish"
   ]
 }
