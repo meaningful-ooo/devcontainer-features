@@ -9,6 +9,11 @@
       "type": "boolean",
       "default": true,
       "description": "Install Fisher plugin manager"
+    },
+    "fishtape": {
+      "type": "boolean",
+      "default": false,
+      "description": "Install Fishtape, 100% pure-Fish test runner"
     }
   },
   "customizations": {

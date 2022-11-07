@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 FISHER=${FISHER:-"true"}
+FISHTAPE=${FISHTAPE:-"false"}
 USERNAME=${USERNAME:-"automatic"}
 
 source /etc/os-release
@@ -117,6 +118,17 @@ if [ "${FISHER}" = "true" ]; then
   fi
   fish -c "fisher -v"
 fi
+
+# Install Fishtape
+if [ "${FISHTAPE}" = "true" ]; then
+  echo "Installing Fishtape..."
+  fish -c 'fisher install jorgebucaran/fishtape'
+  if [ "${USERNAME}" != "root" ]; then
+    su $USERNAME -c 'fish -c "fisher install jorgebucaran/fishtape"'
+  fi
+  fish -c "fishtape -v"
+fi
+
 
 # Clean up
 cleanup

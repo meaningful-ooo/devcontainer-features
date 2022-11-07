@@ -20,6 +20,7 @@ source dev-container-features-test-lib
 check "fish" fish -v
 echo "Testing with user: ${NON_ROOT_USER}"
 check "fisher" su "${NON_ROOT_USER}" -c 'fish -c "fisher -v"'
+check "fishtape is available" su "${NON_ROOT_USER}" -c 'fish -c "type -q fishtape"'
 
 # Report result
 reportResults

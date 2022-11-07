@@ -1,8 +1,10 @@
 {
-  "alpine": {
+  "alpine_with_fishtape": {
     "image": "mcr.microsoft.com/devcontainers/base:alpine",
     "features": {
-      "fish": {}
+      "fish": {
+        "fishtape": true
+      }
     }
   }
 }
