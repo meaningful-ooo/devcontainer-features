@@ -9,6 +9,11 @@
       "type": "boolean",
       "default": true,
       "description": "Install Fisher plugin manager"
+    },
+    "fisher_plugins": {
+      "type": "string",
+      "default": "",
+      "description": "Install [Fish's plugins](https://github.com/jorgebucaran/awsm.fish) using `fisher`"
     }
   },
   "customizations": {

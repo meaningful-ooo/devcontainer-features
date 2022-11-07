@@ -72,6 +72,8 @@ case "${ID}" in
 esac
 echo "Testing with user: ${NON_ROOT_USER}"
 check "fisher" su "${NON_ROOT_USER}" -c 'fish -c "fisher -v"'
+ONLY_FISHER_IS_INSTALL=1
+check "no fisher plugins are installed by default" test "$(su "${NON_ROOT_USER}" -c 'fish -c "fisher list" | wc -l')" -eq $ONLY_FISHER_IS_INSTALL
 
 # Report result
 reportResults

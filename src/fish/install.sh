@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 FISHER=${FISHER:-"true"}
+FISHER_PLUGINS=${FISHER_PLUGINS:-""}
 USERNAME=${USERNAME:-"automatic"}
 
 source /etc/os-release
@@ -117,6 +118,24 @@ if [ "${FISHER}" = "true" ]; then
   fi
   fish -c "fisher -v"
 fi
+
+# Install Fisher plugins
+if [ -n "${FISHER_PLUGINS}" ]; then
+  echo "Installing Fisher plugins…"
+  for plugin in "${FISHER_PLUGINS[@]}"; do
+    printf "\tInstalling plugin: ${plugin}"
+    fish -c "fisher install ${FISHER_PLUGINS}"
+  done
+
+  if [ "${USERNAME}" != "root" ]; then
+    for plugin in "${FISHER_PLUGINS[@]}"; do
+      printf "\tInstalling plugin: ${plugin}"
+      su $USERNAME -c "fish -c 'fisher install ${FISHER_PLUGINS}'"
+    done
+  fi
+  fish -c 'fisher list; cat $__fish_config_dir/fish_plugins'
+fi
+
 
 # Clean up
 cleanup
