@@ -8,7 +8,7 @@ Installs Homebrew
 ```json
 "features": {
     "ghcr.io/meaningful-ooo/devcontainer-features/homebrew:2": {
-        "version": "latest"
+        "shallowClone": false
     }
 }
 ```
