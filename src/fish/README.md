@@ -1,4 +1,5 @@
 
+
 # fish (fish)
 
 Installs fish shell and Fisher plugin manager (optionally)
@@ -7,9 +8,7 @@ Installs fish shell and Fisher plugin manager (optionally)
 
 ```json
 "features": {
-    "ghcr.io/meaningful-ooo/devcontainer-features/fish:1": {
-        "version": "latest"
-    }
+    "ghcr.io/meaningful-ooo/devcontainer-features/fish:1": {}
 }
 ```
 
