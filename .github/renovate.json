@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "automergeStrategy": "fast-forward",
+  "branchPrefix": "renovate-bot/",
+  "commitMessagePrefix": "⬆️",
+  "commitMessageTopic": "`{{depName}}`",
+  "commitMessageExtra": "to `{{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewMajor}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}`",
+  "hostRules": [
+    {
+      "hostType": "npm",
+      "matchHost": "npm.pkg.github.com",
+      "encrypted": {
+        "token": "wcFMA/xDdHCJBTolAQ/9G/aroaAiicwHSPpNfc9MsztBOElRlumTYc0n3jMmydSCHjipVtnEAKWiQa7TeHa2IqJHjXPH56zmNVoUT+njn/fKpej6zNMvixskcjCh36GMhl4Ry/V1/Ynpv3COGHRqR1YC2vb3HAN+N4dNJvnaZ4HC2S5W8qJx5U8IkdpoGG4IjUYte8Mz06ub8rU0TICaCZ/CpzWDrJGtbr5Gt0xu7EOLsBR71cwQlIixgRBE7yLWPQNxGOA/M1Qg0cHC7Eg2vYQn52eTqu6jXZKT7/zZHQwQOTTahkycLfZGsTnst6ncmQQROoMMru/YV4PlwgjOrpQV924RE9e3TWrzb4RdN4FM0uXIodBj19I6qWUmv28YW/HREqNWnPI9aPcZPgoX6abyBfNcScA1llLJQ4BY8/brnddQEZjjE5DStkASMSI/BBWrghzOuYuWSA4Gluf3GYjrlODjAQy3WppoOfWp4Htz+9kCpyXo0dII3uQmenW6eqcpDncq7vsL7JCvyumHVgtxXnH5kv1Y7TI3qcMCsm1pSxXGM/OAjhMe8C6lUKSrm8A2RRKDv4yG5RX48S0FzTiIRO1ozgboxJmHotM8QdhyNB010huS+Zfx6N8QqG9EmQuRs1iAF9vuYq25EX/AsX6VXmLB2tp0bedOS/wiNarA+bk0YihHi8ZEJDI7Na7SfQExyRAtUdg/8be8q2rDLkokKcGdyYzqAU6COdObpL2Hksc+88JRe8L0RLR7FlzQM1KHxdPlmWejAf1ED6G2EynSjsOA/leF/St47Y4bN368mtB4AsiYuXZea42V/g5CeFyku82BLCP5Beid2JJmpMBgobrD9Cg4rce+w0/X"
+      }
+    }
+  ],
+  "onboardingBranch": "renovate-bot/configure",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
+  ],
+  "prBodyTemplate": "{{{table}}}{{{warnings}}}{{{notes}}}{{{changelogs}}}{{{controls}}}",
+  "prConcurrentLimit": 0,
+  "prHourlyLimit": 0,
+  "rangeStrategy": "bump",
+  "rebaseWhen": "behind-base-branch"
+}
