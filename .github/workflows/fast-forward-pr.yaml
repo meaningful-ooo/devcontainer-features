@@ -1,0 +1,25 @@
+name: Fast-forward PR
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  fast-forward:
+    name: Fast-forward PR
+    if: github.event.issue.pull_request != '' && github.event.comment.body == '/ff'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Fast-forward PR
+        uses: endre-spotlab/fast-forward-js-action@2.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          success_message: '⏩ Merged the `source_head` branch as a fast-forward into the `target_base` branch'
+          failure_message: '🚫 Failed to merge the `source_head` branch as a fast-forward into the `target_base` branch'
+          production_branch: 'main'
