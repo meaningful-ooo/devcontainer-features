@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 devDependencies:
   gitmoji-cli:
-    specifier: ^8.2.0
-    version: 8.2.0
+    specifier: ^8.2.2
+    version: 8.2.2
 
 packages:
 
@@ -691,8 +691,8 @@ packages:
       - supports-color
     dev: true
 
-  /gitmoji-cli@8.2.0:
-    resolution: {integrity: sha512-8WZJsmYDAHm2U+802nP2JDrMMKD3EmTa+AgDz+Ac2lrI6tLUxn3b90eVbSIl+XSGCGfzCFZSV0YUdH44RhMKJw==}
+  /gitmoji-cli@8.2.2:
+    resolution: {integrity: sha512-/evkdtq5D8IBOAnEW6mQFptZwKg3qFDAHcNzowNonu/nYecsYtRGyCk2UVWFMEdjQwCHw075xiwHo1spzKKmZA==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
