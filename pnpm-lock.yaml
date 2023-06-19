@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   gitmoji-cli:
-    specifier: ^8.3.1
-    version: 8.3.1
+    specifier: ^8.4.0
+    version: 8.4.0
 
 packages:
 
@@ -695,8 +695,8 @@ packages:
       - supports-color
     dev: true
 
-  /gitmoji-cli@8.3.1:
-    resolution: {integrity: sha512-8GuvWbc0fdliN65iDVIzw55vED3rV7lvbNzH7bjxjXov2XCesinyxxv4auBawxjRm37n6UOpLJnELdLSgjg2BA==}
+  /gitmoji-cli@8.4.0:
+    resolution: {integrity: sha512-AmVaz1ojRfSxpRcdTIjaF+onoZCq0jQ3AYfKh/ixhTJzQ5giBye4j1jPnJ6QYXmfAic62Gd8wN+dmePG84PazA==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
