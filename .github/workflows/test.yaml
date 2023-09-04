@@ -43,7 +43,7 @@ jobs:
           - ubuntu:focal
           - ubuntu:jammy
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli
@@ -61,7 +61,7 @@ jobs:
       matrix:
         features: ${{ fromJSON(needs.detect-changes.outputs.features) }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli
@@ -87,7 +87,7 @@ jobs:
           - ubuntu:focal
           - ubuntu:jammy
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli
@@ -105,7 +105,7 @@ jobs:
           - fish
           - homebrew
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli
