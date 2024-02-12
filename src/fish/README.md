@@ -1,5 +1,4 @@
 
-
 # fish (fish)
 
 Installs fish shell and Fisher plugin manager (optionally)
