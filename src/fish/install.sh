@@ -53,6 +53,9 @@ apt_get_update() {
         apt-get update -y
       fi
     ;;
+    fedora|rhel)
+      dnf update -y
+    ;;
   esac
 }
 
@@ -69,6 +72,9 @@ check_packages() {
       if ! apk -e info "$@" >/dev/null 2>&1; then
         apk add --no-cache "$@"
       fi
+    ;;
+    fedora|rhel)
+      dnf install -y --setopt=install_weak_deps=False "$@"
     ;;
   esac
 }
@@ -105,6 +111,9 @@ case "${ID}" in
   ;;
   alpine)
     apk add --no-cache fish
+  ;;
+  fedora|rhel)
+    dnf install -y --setopt=install_weak_deps=False fish
   ;;
 esac
 

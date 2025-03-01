@@ -1,7 +1,7 @@
 {
   "name": "fish",
   "id": "fish",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "Installs fish shell and Fisher plugin manager (optionally)",
   "documentationURL": "https://github.com/meaningful-ooo/devcontainer-features/tree/main/src/fish",
   "options": {
