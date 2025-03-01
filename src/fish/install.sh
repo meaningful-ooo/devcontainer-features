@@ -94,16 +94,11 @@ echo "Installing fish shell..."
 case "${ID}" in
   debian|ubuntu)
     if [ "${ID}" = "ubuntu" ]; then
-      echo "deb https://ppa.launchpadcontent.net/fish-shell/release-3/ubuntu ${UBUNTU_CODENAME} main" > /etc/apt/sources.list.d/shells:fish:release:3.list
-      curl -fsSL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x59fda1ce1b84b3fad89366c027557f056dc33ca5" | tee -a /etc/apt/trusted.gpg.d/shells_fish_release_3.asc > /dev/null
+      echo "deb https://ppa.launchpadcontent.net/fish-shell/release-4/ubuntu ${UBUNTU_CODENAME} main" > /etc/apt/sources.list.d/shells:fish:release:4.list
+      curl -fsSL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x88421e703edc7af54967ded473c9fcc9e2bb48da" | tee -a /etc/apt/trusted.gpg.d/shells_fish_release_4.asc > /dev/null
     elif [ "${ID}" = "debian" ]; then
-      if [ "${VERSION_ID}" = "9" ]; then
-        echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_9.0/ /' | tee /etc/apt/sources.list.d/shells:fish:release:3.list
-        curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:3/Debian_9.0/Release.key" | tee /etc/apt/trusted.gpg.d/shells_fish_release_3.asc > /dev/null
-      else
-        echo "deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_${VERSION_ID}/ /" | tee /etc/apt/sources.list.d/shells:fish:release:3.list
-        curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:3/Debian_${VERSION_ID}/Release.key" | tee /etc/apt/trusted.gpg.d/shells_fish_release_3.asc > /dev/null
-      fi
+      echo "deb http://download.opensuse.org/repositories/shells:/fish:/release:/4/Debian_${VERSION_ID}/ /" | tee /etc/apt/sources.list.d/shells:fish:release:4.list
+      curl -fsSL "https://download.opensuse.org/repositories/shells:fish:release:4/Debian_${VERSION_ID}/Release.key" | tee /etc/apt/trusted.gpg.d/shells_fish_release_4.asc > /dev/null
     fi
     apt-get update -y
     apt-get -y install --no-install-recommends fish
