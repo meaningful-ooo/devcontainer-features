@@ -42,6 +42,7 @@ jobs:
           - debian:stable-slim
           - ubuntu:focal
           - ubuntu:jammy
+          - fedora:latest
     steps:
       - uses: actions/checkout@v4
 
@@ -86,6 +87,7 @@ jobs:
           - debian:stable-slim
           - ubuntu:focal
           - ubuntu:jammy
+          - fedora:latest
     steps:
       - uses: actions/checkout@v4
 

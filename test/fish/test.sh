@@ -17,6 +17,9 @@ case "${ID}" in
   alpine)
     check "fish" fish -v
   ;;
+  fedora|rhel)
+    check "fish" fish -v
+  ;;
 esac
 check "fisher" fish -c "fisher -v"
 
